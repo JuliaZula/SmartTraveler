@@ -1,0 +1,36 @@
+[versions]
+agp = "8.8.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.10.0"
+constraintlayout = "2.2.0"
+
+retrofit = "2.9.0"
+jsprit = "1.8"
+graphhopper = "10.2"
+guava = "32.0.1-jre"
+commons-math3 = "3.6.1"
+
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+converterGson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+jsprit = { module = "com.graphhopper:jsprit-core", version.ref = "jsprit"}
+graphhopper-core = { module = "com.graphhopper:graphhopper-core", version.ref = "graphhopper" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+commons-math3 = { module = "org.apache.commons:commons-math3", version.ref = "commons-math3" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+

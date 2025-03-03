@@ -1,0 +1,58 @@
+# **1. 忽略 Android Studio 生成的文件**
+.gradle/
+.idea/
+local.properties
+*.iml
+*.log
+captures/
+
+# **2. 忽略编译文件**
+/build/
+/out/
+
+# **3. 忽略本地 Android Virtual Devices（AVD）数据**
+*.keystore
+*.jks
+/.cxx/
+*.hprof
+*.stacktrace
+
+# **4. 忽略 macOS 相关文件**
+.DS_Store
+
+# **5. 忽略 Google Play API 密钥等敏感信息**
+/app/google-services.json
+/google-services.json
+/app/src/main/res/values/secrets.xml
+*.keystore
+
+# **6. 忽略 Kotlin/Java 编译文件**
+/bin/
+/obj/
+/gen/
+/libs/
+*.class
+*.jar
+*.war
+*.ear
+
+# **7. 忽略 NDK 相关文件**
+/.externalNativeBuild/
+/obj/
+/ndk-build/
+
+# **8. 忽略 Gradle 缓存**
+/.gradle/
+/build/
+/.idea/
+**/build/
+gradle.properties
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# **9. 忽略 ProGuard 和 Lint 生成的日志**
+/app/proguard-rules.pro
+/lint-results.xml
+/lint-results-debug.xml
+/lint-results-release.xml
+
