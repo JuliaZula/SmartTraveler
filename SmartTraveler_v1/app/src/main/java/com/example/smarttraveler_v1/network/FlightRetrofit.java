@@ -1,4 +1,4 @@
-package com.example.smarttraveler_v1;
+package com.example.smarttraveler_v1.network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

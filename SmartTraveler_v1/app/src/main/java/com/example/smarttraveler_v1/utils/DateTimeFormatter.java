@@ -1,4 +1,4 @@
-package com.example.smarttraveler_v1.util;
+package com.example.smarttraveler_v1.utils;
 
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;

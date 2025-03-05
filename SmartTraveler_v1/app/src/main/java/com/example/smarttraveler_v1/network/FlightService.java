@@ -1,4 +1,4 @@
-package com.example.smarttraveler_v1;
+package com.example.smarttraveler_v1.network;
 
 import android.util.Log;
 
@@ -42,9 +42,9 @@ public class FlightService {
         this.emptyPassagesCursor = 0;
     }
 
-//    public double[][] getPricesMatrix() {
-//        return pricesMatrix;
-//    }
+    public double[][] getPricesMatrix() {
+        return pricesMatrix;
+    }
 
     public List<String> getAirports() {
         return airports;

@@ -1,7 +1,4 @@
-package com.example.smarttraveler_v1;
-
-import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
+package com.example.smarttraveler_v1.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,18 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
 import androidx.core.util.Pair;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.smarttraveler_v1.data.model.Airport;
-import com.example.smarttraveler_v1.data.repository.AirportRepository;
+import com.example.smarttraveler_v1.R;
 import com.example.smarttraveler_v1.data.repository.CountryRepository;
-import com.example.smarttraveler_v1.util.DateTimeFormatter;
-import com.example.smarttraveler_v1.util.LocationFormatter;
+import com.example.smarttraveler_v1.utils.LocationFormatter;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -31,105 +22,9 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-
-import android.app.DatePickerDialog;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Calendar;
-
-
-//public class MainActivity extends AppCompatActivity {
-//    private AirportRepository repository;
-//    private CountryRepository countryRepository;
-//
-//    private TextView textView;
-//    private Button button;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        // ✅ 初始化 Repository
-//        //repository = new AirportRepository(this);
-//        countryRepository = new CountryRepository(this);
-//
-//        // ✅ 调用数据库方法
-//        checkCountryDatabase();
-//        countryRepository.shutdown();
-//
-//
-//
-//        textView = findViewById(R.id.textView);
-//        button = findViewById(R.id.button);
-//
-//        button.setOnClickListener(v -> showDatePicker());
-//
-//    }
-//
-//    private void showDatePicker() {
-//        Calendar calendar = Calendar.getInstance();
-//        int year = calendar.get(Calendar.YEAR);
-//        int month = calendar.get(Calendar.MONTH) + 1;
-//        int day = calendar.get(Calendar.DAY_OF_MONTH);
-//
-//        new DatePickerDialog(this, (view, selectedYear, selectedMonth, selectedDay) -> {
-//            // 生成两个时间格式
-//            String startOfDay = DateTimeFormatter.generateStartOfDay(selectedYear, selectedMonth + 1, selectedDay);
-//            String endOfDay = DateTimeFormatter.generateEndOfDay(selectedYear, selectedMonth + 1, selectedDay);
-//
-//            // 显示到 UI 上
-//            textView.setText("Start: " + startOfDay + "\nEnd: " + endOfDay);
-//        }, year, month - 1, day).show();
-//    }
-//
-//
-//    private void checkAirportDatabase() {
-//        // ✅ 获取数据库中的所有机场（测试用）
-//        repository.importAirports(this);
-//            List<String> cities = repository.getCitiesByCountry("Poland");
-//
-////            if (airports == null || airports.isEmpty()) {
-////                Log.d("MainActivity", "数据库为空，尝试导入数据...");
-////                repository.importAirports(this, "airports.csv");
-////
-////            } else {
-////                Log.d("MainActivity", "数据库查询成功！机场数量: " + airports.size());
-////                for (Airport airport : airports) {
-////                    Log.d("MainActivity", "Airport: " + airport.name + " (" + airport.city + ")");
-////                }
-////            }
-//        for (String city : cities) {
-//            Log.d("MainActivity", "Cities: " + city);
-//        }
-//    }
-//
-//    private void checkCountryDatabase() {
-//        if (countryRepository.databaseIsEmpty()) {
-//            countryRepository.importCountries(this);
-//        }
-//        Log.d("MainActivity", countryRepository.getCode("China"));
-//        Iterator<String> iterator = countryRepository.getAllCountriesName().listIterator();
-//        for (int i = 0; i < 5; i++) {
-//
-//            Log.d("MainActivity", LocationFormatter.generateQueryLocation(" ",iterator.next(),countryRepository));
-//        }
-//    }
-//}
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -160,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         countryRepository = new CountryRepository(this);
+        countryRepository.importCountries(this);
 
         tvSelectDates = findViewById(R.id.tv_select_dates);
         touristSpotsContainer = findViewById(R.id.tourist_spots_container);
@@ -271,6 +167,10 @@ public class MainActivity extends AppCompatActivity {
         if (country.isEmpty() || city.isEmpty()) return false;
 
         departure = LocationFormatter.generateQueryLocation(city, country, countryRepository);
+        if (departure == null || departure.isEmpty()) {
+            Log.e("parseDeparture", "Failed to generate departure location!");
+            return false;
+        }
 
         String[] departureArray = new String[2];
         departureArray[0] = country;

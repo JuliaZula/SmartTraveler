@@ -47,16 +47,13 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converterGson)
 
-    // JSprit 核心库
+
     implementation (libs.jsprit)
 
-    // GraphHopper 库（JSprit 依赖项）
     implementation (libs.graphhopper.core)
 
-    // Google Guava（JSprit 依赖项）
     implementation (libs.guava)
-
-    // Apache Commons（JSprit 依赖项）
+    
     implementation (libs.commons.math3)
 
     implementation ("androidx.room:room-runtime:2.6.1")

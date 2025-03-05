@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import com.example.smarttraveler_v1.network.FlightService;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

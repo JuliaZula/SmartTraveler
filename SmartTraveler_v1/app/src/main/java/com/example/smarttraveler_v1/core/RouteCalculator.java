@@ -1,9 +1,10 @@
-package com.example.smarttraveler_v1;
+package com.example.smarttraveler_v1.core;
 
 import static com.graphhopper.jsprit.core.algorithm.box.Jsprit.createAlgorithm;
 
 import android.util.Log;
 
+import com.example.smarttraveler_v1.network.FlightService;
 import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
 import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem;
 import com.graphhopper.jsprit.core.problem.job.Service;
@@ -140,4 +141,57 @@ public class RouteCalculator {
             approximateCost = Math.round(costs);
         }
     }
+
+//    public void compareSolutions() {
+//        VehicleRoutingProblem problem = vrpBuilder.build();
+//        VehicleRoutingAlgorithm algorithm = createAlgorithm(problem);
+//        algorithm.setMaxIterations(500);
+//        Collection<VehicleRoutingProblemSolution> solutions = algorithm.searchSolutions();
+//
+//        if (solutions == null || solutions.isEmpty()) {
+//            Log.d("SolutionComparison", "No solutions available for comparison.");
+//            return;
+//        }
+//        VehicleRoutingProblemSolution bestSolution = Solutions.bestOf(solutions);
+//        double bestCost = bestSolution.getCost();
+//        Log.d("SolutionComparison", "Best Solution Cost: " + bestCost);
+//
+//        int solutionIndex = 1;
+//        for (VehicleRoutingProblemSolution solution : solutions) {
+//            double totalCost = 0;
+//
+//            for (VehicleRoute route : solution.getRoutes()) {
+//                double routeCost = 0;
+//                TourActivity prevAct = route.getStart();
+//
+//                for (TourActivity act : route.getActivities()) {
+//                    double c = problem.getTransportCosts().getTransportCost(
+//                            prevAct.getLocation(), act.getLocation(), prevAct.getEndTime(),
+//                            route.getDriver(), route.getVehicle());
+//                    c += problem.getActivityCosts().getActivityCost(
+//                            act, act.getArrTime(), route.getDriver(), route.getVehicle());
+//                    routeCost += c;
+//                    prevAct = act;
+//                }
+//
+//                double c = problem.getTransportCosts().getTransportCost(
+//                        prevAct.getLocation(), route.getEnd().getLocation(), prevAct.getEndTime(),
+//                        route.getDriver(), route.getVehicle());
+//                c += problem.getActivityCosts().getActivityCost(
+//                        route.getEnd(), route.getEnd().getArrTime(), route.getDriver(), route.getVehicle());
+//                routeCost += c;
+//
+//                totalCost += routeCost;
+//            }
+//
+//            double diff = totalCost - bestCost;
+//            double percentageDiff = (diff / bestCost) * 100;
+//
+//            Log.d("SolutionComparison", "Solution " + solutionIndex + " Cost: " + totalCost +
+//                    ", Difference to Best: " + diff + " (" + String.format("%.2f", percentageDiff) + "%)");
+//
+//            solutionIndex++;
+//        }
+//    }
+
 }

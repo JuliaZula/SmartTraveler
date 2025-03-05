@@ -1,10 +1,13 @@
-package com.example.smarttraveler_v1;
+package com.example.smarttraveler_v1.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.smarttraveler_v1.R;
+
 import java.util.ArrayList;
 
 public class ResultActivity extends AppCompatActivity {

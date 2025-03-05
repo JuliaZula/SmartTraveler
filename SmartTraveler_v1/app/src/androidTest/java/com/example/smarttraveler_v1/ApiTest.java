@@ -6,24 +6,20 @@ import static org.junit.Assert.fail;
 
 import android.util.Log;
 
+import com.example.smarttraveler_v1.network.FlightService;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-
-import retrofit2.Call;
-import retrofit2.Response;
 
 public class ApiTest {
-    private String[] airports = {"yinchuan_cn","guangzhou_cn","shanghai_cn","beijing_CN"};
+    //private String[] airports = {"yinchuan_cn","guangzhou_cn","shanghai_cn","beijing_CN"};
+    private String[] airports = {"cairo_eg","beijing_cn"};
     private FlightService testObject;
     @Before
     public void setUp() {
-        testObject = new FlightService(airports, "2025-03-02T00:00:00", "2025-03-10T00:00:00");
+        testObject = new FlightService(airports, "2025-05-18T00:00:00", "2025-05-19T00:00:00");
     }
 
 //    @Test
@@ -46,11 +42,12 @@ public class ApiTest {
 
     @Test
     public void testFillMatrix() {
-        if (testObject.getFilledPricesMatrix() == null) {
-            Log.d("APITest", "is null");
-            return;
-        }
-        String matrixString = formatPricesMatrix(testObject.getFilledPricesMatrix());
+//        if (testObject.getFilledPricesMatrix() == null) {
+//            Log.d("APITest", "is null");
+//            return;
+//        }
+        testObject.getFilledPricesMatrix();
+        String matrixString = formatPricesMatrix(testObject.getPricesMatrix());
         Log.d("Updated Prices Matrix: " ,matrixString);
     }
 

@@ -1,4 +1,4 @@
-package com.example.smarttraveler_v1.util;
+package com.example.smarttraveler_v1.utils;
 
 import com.example.smarttraveler_v1.data.repository.CountryRepository;
 
