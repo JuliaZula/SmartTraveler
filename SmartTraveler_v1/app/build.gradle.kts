@@ -1,10 +1,20 @@
+import org.jetbrains.dokka.DokkaDefaults.includeNonPublic
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
+    id("org.jetbrains.dokka") version "1.9.0"
 }
+
 
 android {
     namespace = "com.example.smarttraveler_v1"
     compileSdk = 35
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         applicationId = "com.example.smarttraveler_v1"
@@ -14,6 +24,20 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val localProps = Properties()
+        val localPropsFile = rootProject.file("local.properties")
+        if (localPropsFile.exists()) {
+            localProps.load(FileInputStream(localPropsFile))
+        }
+
+        val apiBaseUrl = localProps.getProperty("API_BASE_URL") ?: project.findProperty("API_BASE_URL")?.toString()
+
+        if (apiBaseUrl == null) {
+            throw GradleException("API_BASE_URL is missing. Define it in local.properties or gradle.properties.")
+        }
+
+        buildConfigField("String", "API_BASE_URL", "\"$apiBaseUrl\"")
     }
 
     buildTypes {
@@ -37,8 +61,18 @@ android {
     }
 }
 
-dependencies {
+tasks.dokkaHtml.configure {
+    dokkaSourceSets.configureEach {
+        sourceRoots.from(file("src/main/java"))
+        includes.from("README.md")
+        includeNonPublic.set(false)
+        reportUndocumented.set(true)
+        skipEmptyPackages.set(true)
+        skipDeprecated.set(false)
+    }
+}
 
+dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -60,9 +94,11 @@ dependencies {
 
     implementation("com.opencsv:opencsv:5.10")
 
-    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("com.google.android.material:material:1.12.0")
 
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.24")
+
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.9.0")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
 
 

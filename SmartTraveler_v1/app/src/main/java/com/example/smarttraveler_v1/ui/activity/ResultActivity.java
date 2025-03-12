@@ -1,4 +1,5 @@
 package com.example.smarttraveler_v1.ui.activity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,12 +11,22 @@ import com.example.smarttraveler_v1.R;
 
 import java.util.ArrayList;
 
+/**
+ * Activity to display the calculated travel route and costs.
+ * This activity presents the trip details in a structured grid layout.
+ */
 public class ResultActivity extends AppCompatActivity {
 
     private GridLayout resultGrid;
     private TextView tvCost;
     private Button btnBack;
 
+    /**
+     * Called when the activity is created.
+     * Retrieves travel data from the intent and displays it in a GridLayout.
+     *
+     * @param savedInstanceState The saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,27 +36,29 @@ public class ResultActivity extends AppCompatActivity {
         tvCost = findViewById(R.id.tv_cost);
         btnBack = findViewById(R.id.btn_back);
 
+        // Retrieve data from the intent
         Intent intent = getIntent();
         ArrayList<ArrayList<String>> result = (ArrayList<ArrayList<String>>) intent.getSerializableExtra("result");
         double cost = intent.getDoubleExtra("cost", 0.0);
         ArrayList<Double> costSeparated = (ArrayList<Double>) intent.getSerializableExtra("costSeparated");
 
+        // Display total cost
         tvCost.setText(String.format("Approx. Price 💵：%.1f €", cost));
 
-        // 插入数据
+        // Populate the grid layout with travel data
         if (result != null && costSeparated != null) {
             for (int i = 0; i < result.size(); i++) {
-                addGridItem(result.get(i).get(0)); // 国家
-                addGridItem(result.get(i).get(1)); // 城市
+                addGridItem(result.get(i).get(0)); // Country
+                addGridItem(result.get(i).get(1)); // City
 
-                // 插入机票费用（除最后一个城市外）
+                // Insert flight cost (except for the last location)
                 if (i < costSeparated.size()) {
                     addCostItem(String.format("Flight: %.1f €", costSeparated.get(i)));
                 }
             }
         }
 
-        // 返回按钮
+        // Set up the back button
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(ResultActivity.this, MainActivity.class);
             startActivity(backIntent);
@@ -53,7 +66,11 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
-    // 添加国家或城市的 GridItem
+    /**
+     * Adds a text item (country or city) to the GridLayout.
+     *
+     * @param text The text to be displayed.
+     */
     private void addGridItem(String text) {
         TextView textView = new TextView(this);
         textView.setText(text);
@@ -72,7 +89,11 @@ public class ResultActivity extends AppCompatActivity {
         resultGrid.addView(textView);
     }
 
-    // 插入机票价格的 GridItem（占两列）
+    /**
+     * Adds a flight cost item to the GridLayout (spanning two columns).
+     *
+     * @param text The formatted flight cost text.
+     */
     private void addCostItem(String text) {
         TextView textView = new TextView(this);
         textView.setText(text);
@@ -85,8 +106,8 @@ public class ResultActivity extends AppCompatActivity {
         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
         params.width = 0;
         params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-        params.columnSpec = GridLayout.spec(0, 2, 1f); // 占据 2 列
-        params.setMargins(8, 4, 8, 12); // 调整间距
+        params.columnSpec = GridLayout.spec(0, 2, 1f); // Spanning 2 columns
+        params.setMargins(8, 4, 8, 12);
         textView.setLayoutParams(params);
 
         resultGrid.addView(textView);

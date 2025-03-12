@@ -33,6 +33,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Main activity for user input collection.
+ * Handles departure details, travel dates, and tourist spots.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvSelectDates;
@@ -49,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
     private String[] touristSpots;            // city_countryCode
     private Map<String,String[]> airportsMap  = new HashMap<>(); //<{country,city},code>
 
+    /**
+     * Initializes the activity, sets up UI components, and loads country data.
+     *
+     * @param savedInstanceState The saved instance state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(v -> collectTripData());
     }
 
-    // show calender selector
+    /**
+     * Displays a date range picker for selecting travel dates.
+     */
     private void showDateRangePicker() {
         MaterialDatePicker.Builder<Pair<Long, Long>> builder = MaterialDatePicker.Builder.dateRangePicker();
         builder.setTitleText("Select Travel Dates");
@@ -114,7 +125,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * Watches for text input changes and validates the departure fields.
+     */
     private final TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -127,15 +140,18 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable s) {}
     };
-
+    /**
+     * Validates the departure country and city fields.
+     */
     private void validateDepartureInput() {
         String country = editDepartureCountry.getText().toString().trim();
         String city = editDepartureCity.getText().toString().trim();
 
         btnAddTouristSpot.setEnabled(!country.isEmpty() && !city.isEmpty());
     }
-
-
+    /**
+     * Collects all trip-related data and starts the next activity.
+     */
     private void collectTripData() {
         if (!parseDeparture() || !parseTouristSpots()) {
             Log.e("TripData", "failed！");
@@ -151,8 +167,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(loadingIntent);
     }
 
-
-
     private void printString(String[] strings) {
         for(String s : strings) {
             for(String s1 : Objects.requireNonNull(airportsMap.get(s))) {
@@ -160,7 +174,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
+    /**
+     * Parses and validates the departure location.
+     *
+     * @return True if parsing was successful, false otherwise.
+     */
     private boolean parseDeparture() {
         String country = editDepartureCountry.getText().toString().trim();
         String city = editDepartureCity.getText().toString().trim();
@@ -179,7 +197,11 @@ public class MainActivity extends AppCompatActivity {
         airportsMap.put(departure,departureArray);
         return true;
     }
-
+    /**
+     * Parses and validates the tourist spots input fields.
+     *
+     * @return True if at least one valid tourist spot is entered, false otherwise.
+     */
     private boolean parseTouristSpots() {
         List<String> spotsList = new ArrayList<>();
 
@@ -209,7 +231,10 @@ public class MainActivity extends AppCompatActivity {
         touristSpots = spotsList.toArray(new String[0]);
         return true;
     }
-
+    /**
+     * Dynamically adds a new input row for a tourist spot.
+     * Each row consists of two EditText fields for country and city input.
+     */
     private void addTouristSpot() {
         LinearLayout rowLayout = new LinearLayout(this);
         rowLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -235,7 +260,9 @@ public class MainActivity extends AppCompatActivity {
 
         validateForm();
     }
-
+    /**
+     * Clears the form fields and resets the UI.
+     */
     private void clearForm() {
         editDepartureCountry.setText("");
         editDepartureCity.setText("");
@@ -245,6 +272,9 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit.setEnabled(false);
         isDateSelected = false;
     }
+    /**
+     * Validates the form and enables/disables the submit button.
+     */
     private void validateForm() {
         boolean isDepartureFilled = !editDepartureCountry.getText().toString().trim().isEmpty()
                 && !editDepartureCity.getText().toString().trim().isEmpty();

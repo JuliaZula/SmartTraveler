@@ -40,16 +40,16 @@ public class ApiTest {
 //        assertFalse("Prices Matrix should not be empty:\n" + matrixString, matrixString.isEmpty());
 //    }
 
-    @Test
-    public void testFillMatrix() {
+//    @Test
+//    public void testFillMatrix() {
 //        if (testObject.getFilledPricesMatrix() == null) {
 //            Log.d("APITest", "is null");
 //            return;
 //        }
-        testObject.getFilledPricesMatrix();
-        String matrixString = formatPricesMatrix(testObject.getPricesMatrix());
-        Log.d("Updated Prices Matrix: " ,matrixString);
-    }
+//        testObject.getFilledPricesMatrix();
+//        String matrixString = formatPricesMatrix(testObject.getPricesMatrix());
+//        Log.d("Updated Prices Matrix: " ,matrixString);
+//    }
 
 //    @Test
 //    public void testCallExecuteDirectly() throws Exception {

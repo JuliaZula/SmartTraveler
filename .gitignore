@@ -56,3 +56,10 @@ gradle.properties
 /lint-results-debug.xml
 /lint-results-release.xml
 
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
