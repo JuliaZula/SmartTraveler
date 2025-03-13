@@ -15,17 +15,16 @@ Simply enter your departure location and multiple destinations, and the app **au
 - `BeautifulSoup` - Web scraping for flight data
 
 ## How to Run the Android App
-### **1️⃣ Clone the project**
+### Clone the project
 git clone https://github.com/JuliaZula/SmartTraveler.git
 cd SmartTraveler_v1
 
-## 📱 How to Run the Android App
-### **2️⃣ Open the project in Android Studio**
+### Open the project in Android Studio
 - **Requirements:** Android Studio **Giraffe (2023.3.1) or later**
 - **Check `app/local.properties` configuration**
   API_BASE_URL=http://10.0.2.2:5002
 
-## 🖥 How to Run the Flask Backend
+## How to Run the Flask Backend
 ### **Start the Flask server**
 cd flask_server
 python app.py
