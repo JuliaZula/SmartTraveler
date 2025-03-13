@@ -17,7 +17,7 @@ Simply enter your departure location and multiple destinations, and the app **au
 ## How to Run the Android App
 ### Clone the project
 git clone https://github.com/JuliaZula/SmartTraveler.git
-cd SmartTraveler_v1
+
 
 ### Open the project in Android Studio
 - **Requirements:** Android Studio **Giraffe (2023.3.1) or later**
@@ -26,7 +26,7 @@ cd SmartTraveler_v1
 
 ## How to Run the Flask Backend
 ### **Start the Flask server**
-cd flask_server
+**cd flask_server**
 python app.py
 
 
