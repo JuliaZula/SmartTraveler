@@ -8,7 +8,6 @@ Simply enter your departure location and multiple destinations, and the app **au
 ### Android (Java)
 - `Retrofit` - Handles API requests
 - `Room` - Local database storage
-- `Material Design` - Modern UI components
 - `jsprit` - Solving the Traveling Salesman Problem (TSP)
 - `SQLite` - Storing country and airport data
 
