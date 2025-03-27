@@ -2,7 +2,7 @@
 
 ## 1. Problématique
 
-Dans ce projet, je cherche à résoudre un problème du voyageur de commerce asymétrique (ATSP - Asymmetric Traveling Salesman Problem), qui consiste à trouver le meilleur itinéraire pour visiter plusieurs villes dans une période donnée, tout en minimisant le coût total des billets d'avion et en revenant au point de départ.
+Dans ce projet, je cherche à résoudre un problème du voyageur de commerce [asymétrique](https://en.wikipedia.org/wiki/Travelling_salesman_problem) (ATSP - Asymmetric Traveling Salesman Problem), qui consiste à trouver le meilleur itinéraire pour visiter plusieurs villes dans une période donnée, tout en minimisant le coût total des billets d'avion et en revenant au point de départ.
 
 Le problème vient du fait que les prix des billets varient en fonction du jour. L'ordre de visite des villes influence donc les dates des vols et, par conséquent, leur coût. Pour trouver une solution efficace, je dois prendre en compte ces variations de prix.
 
