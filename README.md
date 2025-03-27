@@ -11,7 +11,7 @@ Simply enter the departure location, multiple destinations and the dates, then i
 ### Android (Java)
 - `Retrofit` - Handles API requests
 - `Room` - Local database storage
-- `jsprit([text](https://github.com/graphhopper/jsprit/tree/v1.4))` - Solving the Traveling Salesman Problem (TSP)
+- `[jsprit](https://github.com/graphhopper/jsprit/tree/v1.4)` - Solving the Traveling Salesman Problem (TSP)
 - `SQLite` - Storing country and airport data
 
 ### Flask (Python)
