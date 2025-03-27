@@ -24,7 +24,7 @@ Mais cette méthode a deux limites :
 
 1. **Traitement des données** : Récupération des prix journaliers les plus bas, puis calcul de la moyenne.  
 2. **Modélisation du problème** : Conversion de chaque ville en un nœud ATSP.  
-3. **Optimisation avec jsprit** : Utilisation d’une méta (algorithme génétique, recuit simulé, etc.) pour trouver une solution approximative.
+3. **Optimisation avec [jsprit](https://github.com/graphhopper/jsprit/tree/v1.4)** : Utilisation d’une méta (algorithme génétique, recuit simulé, etc.) pour trouver une solution approximative.
 
 ### Initialisation des véhicules
 

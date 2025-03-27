@@ -1,7 +1,16 @@
 # SmartTraveler
 
-SmartTraveler is atravel assistant that combines an Android App based on a Flask server to help users find the most cost-effective travel itinerary.  
+SmartTraveler is a travel assistant that combines an Android App based on a Flask server to help users find the most cost-effective travel itinerary.  
 Simply enter the departure location, multiple destinations and the dates, then it calculates the optimal travel order while fetching the cheapest flights by the server.
+
+
+
+
+## Features
+- Input departure city, destinations, and travel dates
+- Fetches cheapest flights in real-time (server side)
+- Solves ATSP using jsprit to optimize visit order
+- Displays total estimated cost and recommended route
 
 
 
@@ -11,7 +20,7 @@ Simply enter the departure location, multiple destinations and the dates, then i
 ### Android (Java)
 - `Retrofit` - Handles API requests
 - `Room` - Local database storage
-- `[jsprit](https://github.com/graphhopper/jsprit/tree/v1.4)` - Solving the Traveling Salesman Problem (TSP)
+- `jsprit` - Solving the Traveling Salesman Problem (TSP)
 - `SQLite` - Storing country and airport data
 
 ### Flask (Python)
@@ -39,8 +48,8 @@ git clone https://github.com/JuliaZula/SmartTraveler.git
 
 
 ## Documentation
-- [UML](/docs/UML/)
-- [Alorithme Report](/docs/algorithm_report.md)
+- [UML Diagrams](/docs/UML/) 
+- [Algorithm Report](/docs/algorithm_report.md)
 
 
 
