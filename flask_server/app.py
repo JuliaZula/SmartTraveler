@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/get_flights', methods=['GET'])
 def get_flights():
-    print("收到请求")
+    print("recived the request")
     try:
         departure = request.args.get("departure")
         if not departure:
@@ -40,11 +40,11 @@ def get_flights():
         return response
 
     except Exception as e:
-        print(f"发生错误：{e}")
+        print(f"error:{e}")
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     import logging
     logging.basicConfig(level=logging.DEBUG)
-    app.run(host='0.0.0.0', port=5002, debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=False)
 
