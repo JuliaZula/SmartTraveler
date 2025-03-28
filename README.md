@@ -54,3 +54,11 @@ git clone https://github.com/JuliaZula/SmartTraveler.git
 
 
 
+## Screenshots
+- ![Home screen](images/home_screen.png)
+- ![Canlender screen](images/calender.png)
+- ![Result screen](images/result_screen.png)
+
+
+
+

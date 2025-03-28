@@ -6,7 +6,9 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.ctc.wstx.shaded.msv_core.writer.relaxng.Context;
 import com.example.smarttraveler_v1.R;
 
 import java.util.ArrayList;
@@ -53,7 +55,7 @@ public class ResultActivity extends AppCompatActivity {
 
                 // Insert flight cost (except for the last location)
                 if (i < costSeparated.size()) {
-                    addCostItem(String.format("Flight: %.1f €", costSeparated.get(i)));
+                    addCostItem(String.format("Cost: %.1f €", costSeparated.get(i)));
                 }
             }
         }
@@ -76,7 +78,7 @@ public class ResultActivity extends AppCompatActivity {
         textView.setText(text);
         textView.setTextSize(16);
         textView.setPadding(12, 12, 12, 12);
-        textView.setBackgroundResource(android.R.color.darker_gray);
+        textView.setBackground(ContextCompat.getDrawable(this,R.drawable.round_corner_bg));
         textView.setTextColor(getResources().getColor(android.R.color.white, getTheme()));
 
         GridLayout.LayoutParams params = new GridLayout.LayoutParams();
@@ -97,7 +99,7 @@ public class ResultActivity extends AppCompatActivity {
     private void addCostItem(String text) {
         TextView textView = new TextView(this);
         textView.setText(text);
-        textView.setTextSize(14);
+        textView.setTextSize(20);
         textView.setPadding(12, 12, 12, 12);
         textView.setBackgroundResource(android.R.color.transparent);
         textView.setTextColor(getResources().getColor(android.R.color.holo_orange_light, getTheme()));
