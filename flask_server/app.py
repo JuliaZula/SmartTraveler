@@ -1,10 +1,28 @@
 from flask import Flask, jsonify, request, Response
+
+import os
+import openai
+import requests
+from datetime import datetime
+from dotenv import load_dotenv
+
 import json
 import asyncio
 from fetcher import fetch_all
 from parser import parse_results
+from clothing import clothing_bp
+
+
+
+load_dotenv()
+OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
+print("OPENWEATHER_API_KEY =", OPENWEATHER_API_KEY)
+
 
 app = Flask(__name__)
+
+app.register_blueprint(clothing_bp)
 
 @app.route('/get_flights', methods=['GET'])
 def get_flights():

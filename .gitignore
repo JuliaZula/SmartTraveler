@@ -25,6 +25,7 @@ captures/
 /google-services.json
 /app/src/main/res/values/secrets.xml
 *.keystore
+*.env
 
 # **6. 忽略 Kotlin/Java 编译文件**
 /bin/

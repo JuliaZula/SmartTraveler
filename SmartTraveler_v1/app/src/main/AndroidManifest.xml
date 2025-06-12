@@ -30,6 +30,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".ui.activity.ResultActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".ui.activity.ClothingAdviceActivity" />
 
     </application>
 

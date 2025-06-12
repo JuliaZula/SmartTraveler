@@ -2,6 +2,7 @@ package com.example.smarttraveler_v1.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
@@ -66,6 +67,24 @@ public class ResultActivity extends AppCompatActivity {
             startActivity(backIntent);
             finish();
         });
+
+        Button btnClothingAdvice = findViewById(R.id.btn_clothing_advice);
+        btnClothingAdvice.setOnClickListener(v -> {
+            Intent clothingIntent = new Intent(ResultActivity.this, ClothingAdviceActivity.class);
+
+            //get the name of the first city
+            String city = result != null && !result.isEmpty() ? result.get(0).get(1) : "Paris";
+            String startDate = getIntent().getStringExtra("start_date");
+            String endDate = getIntent().getStringExtra("end_date");
+
+            clothingIntent.putExtra("city", city);
+            clothingIntent.putExtra("start_date", startDate);
+            Log.d("StartTime", "🟢" + startDate);
+            clothingIntent.putExtra("end_date", endDate);
+
+            startActivity(clothingIntent);
+        });
+
     }
 
     /**

@@ -125,6 +125,11 @@ public class LoadingActivity extends AppCompatActivity {
             resultIntent.putExtra("result", result);
             resultIntent.putExtra("cost", cost);
             resultIntent.putExtra("costSeparated", costSeparated);
+            resultIntent.putExtra("start_date", startTime.substring(0, 10));  // get "YYYY-MM-DD"
+            resultIntent.putExtra("end_date", endTime.substring(0, 10));
+            Log.d("DateIntent", "Sending start_date = " + startTime + ", end_date = " + endTime);
+
+
             startActivity(resultIntent);
 
             // Delay activity finish to allow UI transition

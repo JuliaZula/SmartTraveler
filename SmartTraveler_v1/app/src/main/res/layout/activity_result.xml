@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 背景图 -->
     <ImageView
         android:id="@+id/background_image"
         android:layout_width="match_parent"
@@ -22,10 +21,6 @@
         <View
             android:layout_width="252dp"
             android:layout_height="40dp" />
-
-        <!-- 标题 -->
-
-        <!-- 结果列表 -->
 
         <TextView
             android:id="@+id/tv_title"
@@ -52,7 +47,6 @@
                 android:padding="8dp" />
         </ScrollView>
 
-        <!-- 总费用 -->
         <TextView
             android:id="@+id/tv_cost"
             android:layout_width="match_parent"
@@ -75,6 +69,15 @@
             android:maxWidth="200dp"
             android:textColor="@android:color/white"
             android:text="GO BACK" />
+
+        <Button
+            android:id="@+id/btn_clothing_advice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Clothing Advice"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/white" />
+
 
     </LinearLayout>
 
