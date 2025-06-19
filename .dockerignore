@@ -1,0 +1,31 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+
+# 
+venv/
+.env/       
+
+# .env 
+flask_server/.env
+.env       
+
+# Git log
+.git/
+.gitignore
+*.log
+
+# tests
+test_run.py
+test/
+tests/
+
+# IDE
+.vscode/
+.idea/
+
+# Mac/Linux
+.DS_Store
+Thumbs.db
+
